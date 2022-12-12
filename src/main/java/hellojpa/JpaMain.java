@@ -62,7 +62,6 @@ public class JpaMain {
 
             // 수정 시 아래 코드 작성할 필요 없음.
 //            em.persist(member);
-
 //            em.setFlushMode(FlushModeType.AUTO); // 커밋이나 쿼리를 실행할 때 플러시 (Default)
 //            em.setFlushMode(FlushModeType.COMMIT); // 커밋 시에만 flush (JPQL을 사용할 경우 필요함)
 //            em.flush();
