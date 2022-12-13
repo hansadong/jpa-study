@@ -50,21 +50,29 @@ public class JpaMain {
             // 변경 감지 (자바 컬렉션과 같이 값을 수정하면 변경됨)
             // 1차 캐시에는 @Id와 Entity, 스냅샷이 있는데 커밋 시 flush()가 실행되면서
             // Entity와 스냅샷을 비교하여 변경 내용이 있을 경우 update 쿼리 날림
-            Member member = em.find(Member.class, 7L);
-            member.setName("AAAAA");
+//            Member member = em.find(Member.class, 7L);
+//            member.setName("AAAAA");
 
             // 준영속 상태가 되어 변경내용이 있어도 수정되지 않음
 //            em.detach(member); // 특정 Entity만 분리
 
-            em.clear(); // 영속성 컨텍스트에서 관리하는 Entity 모두 초기화됨
-
-            Member member1 = em.find(Member.class, 7L);
+//            em.clear(); // 영속성 컨텍스트에서 관리하는 Entity 모두 초기화됨
 
             // 수정 시 아래 코드 작성할 필요 없음.
 //            em.persist(member);
 //            em.setFlushMode(FlushModeType.AUTO); // 커밋이나 쿼리를 실행할 때 플러시 (Default)
 //            em.setFlushMode(FlushModeType.COMMIT); // 커밋 시에만 flush (JPQL을 사용할 경우 필요함)
 //            em.flush();
+
+//            Member member = new Member(1L, "AAA");
+//            em.persist(member);
+
+            Member member = new Member();
+            member.setId(3L);
+            member.setUserName("CCC");
+            member.setRoleType(RoleType.GUEST);
+
+            em.persist(member);
 
             tx.commit();
         } catch(Exception e) {
